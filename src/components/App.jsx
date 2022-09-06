@@ -1,16 +1,18 @@
+import { Routes, Route } from "react-router-dom";
+
+
+import { SplashScreenReact } from 'pages/SplashScreenReact';
+import { About } from 'pages/About';
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Routes>
+        <Route path="/" element={<SplashScreenReact />} />
+        <Route path="/about" element={<About />} />
+        {/* <Route path="/products" element={<Products />} /> */}
+      </Routes>
     </div>
   );
 };
