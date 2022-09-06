@@ -1,39 +1,36 @@
-import { Routes, Route, Link, NavLink  } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import { SplashScreenReact } from 'pages/SplashScreenReact';
-import { About } from 'pages/About';
-import { NotFound } from 'pages/NotFound';
+import { About } from "pages/About";
+import { Home } from "pages/Home";
+import { Products } from "pages/Products";
+import { ProductDetails } from "pages/ProductDetails";
+import { NotFound } from "pages/NotFound";
 
-import styled from "styled-components";
-
-const StyledLink = styled(NavLink)`
-padding-top: 10px;
-padding-left: 20px;
-  display: flex;
-  // align-items: flex-start;
-  // justify-content: center;
-  color: black;
-
-  &.active {
-    color: orange;
-  }
-`;
+import { Container, Header, Logo, Link } from "./App.styled";
 
 export const App = () => {
   return (
-    <div>
-      <nav>
-        <StyledLink  to="/">Home</StyledLink>
-        <StyledLink  to="/about">About</StyledLink>
-        <StyledLink  to="/products">Products</StyledLink>
-      </nav>
-
+    <Container>
+      <Header>
+        <Logo>
+          <span role="img" aria-label="computer icon">
+            💻
+          </span>{" "}
+          GoMerch Store
+        </Logo>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/products">Products</Link>
+        </nav>
+      </Header>
       <Routes>
-        <Route path="/" element={<SplashScreenReact />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        {/* <Route path="/products" element={<Products />} /> */}
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </Container>
   );
 };
