@@ -10,7 +10,7 @@ import { Container, CardWrapper, ProductName } from "components/ProductList.styl
 
 
 
-export const Products = () => {
+const Products = () => {
     const products = getProducts();
     const [searchParams, setSearchParams] = useSearchParams();
     const productName = searchParams.get("name") ?? "";
@@ -49,7 +49,7 @@ export const Products = () => {
     );
 };
 
-
+export default Products;
 
 //todo OLD-1
 // import { ProductList } from "../components/ProductList";
