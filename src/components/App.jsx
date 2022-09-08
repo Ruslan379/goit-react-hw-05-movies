@@ -7,17 +7,118 @@ import axios from 'axios';
 
 
 
-export const App = () => {
 
-//! pixabay.com  
+export const App = () => {
+//!-----------------------------------------------------------------------------------------------------------------------------------------------------------
+  //! Константы для URL-запросов:
+  const BASE_URL = 'https://api.themoviedb.org/3';
+  const API_KEY = '41b230c5977baa736e324532e16fdadb';
+
+  const END_POINTS_1 = "trending/all/day" //!  /trending/all/day ==> список самых популярных фильмов на сегодня для создания коллекции на главной странице.
+  
+  const END_POINTS_2 = "search/movie" //!  /search/search-movies ==> поиск кинофильма по ключевому слову на странице фильмов.
+  const query = "avatar"
+  const page = 1; //? можно добавить в строку запроса
+
+  const END_POINTS_3 = "movie" //!  /movies/get-movie-details ==> запрос полной информации о фильме для страницы кинофильма.
+  const movie_id = 19995
+  
+  const END_POINTS_4 = "movie" //!  /movies/get-movie-credits  ==> запрос информации об актёрском составе для страницы кинофильма.
+  const CREDITS = "credits"
+
+  const END_POINTS_5 = "movie" //!  /movies/get-movie-reviews ==> запрос обзоров для страницы кинофильма.
+  const REVIEWS  = "reviews"
+
+
+//!-----------------------------------------------------------------------------------------------------------------------------------------------------------
+  //! Формируем строки URL-запросов:
+  const url_1 = `${BASE_URL}/${END_POINTS_1}?api_key=${API_KEY}`; 
+  console.log("url_1: ", url_1); //!
+
+  const url_2 = `${BASE_URL}/${END_POINTS_2}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`; 
+  console.log("url_2: ", url_2); //!
+
+  const url_3 = `${BASE_URL}/${END_POINTS_3}/${movie_id}?api_key=${API_KEY}&language=en-US`; 
+  console.log("url_3: ", url_3); //!
+
+  const url_4 = `${BASE_URL}/${END_POINTS_4}/${movie_id}/${CREDITS}?api_key=${API_KEY}&language=en-US`; 
+  console.log("url_4: ", url_4); //!
+  
+  const url_5 = `${BASE_URL}/${END_POINTS_5}/${movie_id}/${REVIEWS}?api_key=${API_KEY}&language=en-US&page=${page}`; 
+  console.log("url_5: ", url_5); //!
+
+
+//!-----------------------------------------------------------------------------------------------------------------------------------------------------------
+  //! Формируем URL-запросы:
+  async function fetchPixabay() { 
+  //                                   https://api.themoviedb.org/3/movie/19995/reviews?api_key=41b230c5977baa736e324532e16fdadb&language=en-US&page=1
+  //                                   https://api.themoviedb.org/3/movie/19995/credits?api_key=41b230c5977baa736e324532e16fdadb&language=en-US
+  //                                   https://api.themoviedb.org/3/movie/19995?api_key=41b230c5977baa736e324532e16fdadb&language=en-US
+  // const response = await axios.get("https://api.themoviedb.org/3/authentication/token/new?api_key=41b230c5977baa736e324532e16fdadb") //!  /a temporary request token
+  // const response = await axios.get("https://api.themoviedb.org/3/movie/550?api_key=41b230c5977baa736e324532e16fdadb") //! пример
+  // const response = await axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=41b230c5977baa736e324532e16fdadb") //!  /trending/all/day
+  
+  const response = await axios.get(url_5) //!  /trending/all/day ==> список самых популярных фильмов на сегодня для создания коллекции на главной странице.
+    // const all = await response.data
+    console.log("response.data: ", response.data); //!
+    // console.log("all: ", all); //!
+
+    // const { total_pages, results } = response.data //!  /trending/all/day ==> список самых популярных фильмов на сегодня
+    // console.log("axios results: ", results); //!
+    // console.log("axios total_pages: ", total_pages); //!
+
+    // return total_pages;
+    return response.data;
+    }
+  
+  const request = fetchPixabay()
+    .then(res => {
+      console.log("res: ", res); //!
+
+      // const { results, total_pages } = res;
+      // console.log("IN fetchPixabay results: ", results); //!
+      // console.log("IN fetchPixabay total_pages: ", total_pages); //!
+
+      // return total_pages;
+    }); //!
+  
+  console.log("OUT fetchPixabay request: ", request); //!
+  // console.log("OUT fetchPixabay results: ", results); //!
+
+
+
+
+  return (
+    <div>
+      запрос
+      {/* {request}  */}
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! pixabay.com
 //! Формируем строку URL-запроса:
-  const query = "cat"
-  const API_KEY = '28759369-3882e1068ac26fe18d14affeb';
-  const BASE_URL = 'https://pixabay.com/api/';
-  const page = 1;
-  const per_page = 12;
-  const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&page=${page}&per_page=${per_page}`; //! with API_KEY
-  console.log("url: ", url);
+  // const query = "cat"
+  // const API_KEY = '28759369-3882e1068ac26fe18d14affeb';
+  // const BASE_URL = 'https://pixabay.com/api/';
+  // const page = 1;
+  // const per_page = 12;
+  // const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&page=${page}&per_page=${per_page}`; //! with API_KEY
+  // console.log("url: ", url);
+
   //! pixabay.com
   // async function fetchPixabay() {
   //   const response = await axios.get(url)
@@ -35,33 +136,16 @@ export const App = () => {
 
 
 
-
-
-
-//! themoviedb.org
-async function fetchPixabay() {
-    const response = await axios.get("https://api.themoviedb.org/3/movie/550?api_key=41b230c5977baa736e324532e16fdadb")
-    const all = await response.data
-    console.log("response.data: ", response.data); //!
-    console.log("all: ", all); //!
-    return response.data;
-    }
-  
-  const request1 = fetchPixabay()
-    .then(res => console.log("res: ", res)); //!
-  
-  console.log("fetchPixabay request1: ", request1); //!
-
-
-
-  return (
-    <div>
-      запрос
-      {/* {request1}  */}
-    </div>
-  );
-};
-
-
+//? Работа с Movie Database API part 1 ==> E:\GoIT\Code\ex-cinema-main
+// function server(url, settings = {}){
+//     const defaultPath = 'https://api.themoviedb.org/3/movie';
+//     const imagePath = 'https://image.tmdb.org/t/p/w500/';
+//     const API_KEY = 'c6f82dc5dce289d673c19d018e6b6c47';
+//     const language = 'ru'
+//     const _url = `${ defaultPath }/${url}?api_key=${API_KEY}&language=${language}&region=${language}`;
+//     return fetch(_url).then(res => {
+//         return res.json();
+//     })
+// }
 
 
