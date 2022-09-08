@@ -1,8 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
+
+
 import { Home } from "pages/Home";
-// import { Movies } from "../pages/Products";
-// import { MoviesDetails } from "../pages/ProductDetails";
+import { NotFound } from "pages/NotFound";
+// import { Movies } from "pages/Products";
+// import { MoviesDetails } from "pages/ProductDetails";
 
 import { Container, Header, Link } from "./App.styled";
 
@@ -20,6 +23,7 @@ export const App = () => {
         <Route path="/" element={<Home />} />
         {/* <Route path="/movies" element={<Movies />} /> */}
         {/* <Route path="/movies/:id" element={<MoviesDetails />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Container>
   );

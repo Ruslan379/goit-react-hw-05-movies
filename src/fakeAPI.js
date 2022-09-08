@@ -2,14 +2,6 @@ import axios from 'axios';
 
 
 
-// import { SharedLayout } from "components/SharedLayout";
-// import { NotFound } from "pages/NotFound";
-
-
-
-
-
-// export const App = () => {
 //!-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Константы для URL-запросов:
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -53,7 +45,6 @@ console.log("url_5: ", url_5); //!
 
 //!-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Формируем URL-запросы:
-// export const App = () => {
 export async function getTrendingAllDay() {
     //                                   https://api.themoviedb.org/3/movie/19995/reviews?api_key=41b230c5977baa736e324532e16fdadb&language=en-US&page=1
     //                                   https://api.themoviedb.org/3/movie/19995/credits?api_key=41b230c5977baa736e324532e16fdadb&language=en-US
@@ -83,12 +74,7 @@ export async function getTrendingAllDay() {
 
 
 
-
-
-
-
-
-
+//todo OLD
 // const products = [
 //     { id: "h-1", name: "Hoodie 1" },
 //     { id: "h-2", name: "Hoodie 2" },
