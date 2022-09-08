@@ -16,7 +16,7 @@ export const App = () => {
   const BASE_URL = 'https://pixabay.com/api/';
   const page = 1;
   const per_page = 12;
-  const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&page=${page}&per_page=${per_page}`; //! with API_KEY
+  // const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&page=${page}&per_page=${per_page}`; //! with API_KEY
 
   //! pixabay.com
   // async function fetchPixabay() {
