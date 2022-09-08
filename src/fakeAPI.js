@@ -62,14 +62,14 @@ export async function getTrendingAllDay() {
     // const response = await axios.get("https://api.themoviedb.org/3/movie/550?api_key=41b230c5977baa736e324532e16fdadb") //! пример
     // const response = await axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=41b230c5977baa736e324532e16fdadb") //!  /trending/all/day
 
-    const response = await axios.get(url_1) //!  
-    // const all = await response.data
-    console.log("response.data: ", response.data); //!
-    // console.log("all: ", all); //!
+    const response = await axios.get(url_1) //!
+    // const all = await response.data //?
+    // console.log("axios response.data: ", response.data); //!
+    // console.log("all: ", all); //?
 
-    const { total_pages, results } = response.data //!  /trending/all/day ==> список самых популярных фильмов на сегодня
-    console.log("axios results: ", results); //!
-    console.log("axios total_pages: ", total_pages); //!
+    const { results } = response.data //!  /trending/all/day ==> список самых популярных фильмов на сегодня
+    // console.log("axios results: ", results); //!
+    // console.log("axios total_pages: ", total_pages); //!
 
     // return total_pages;
     // return response.data;
