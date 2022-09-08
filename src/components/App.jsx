@@ -1,109 +1,67 @@
-import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
-
-import { SharedLayout } from "components/SharedLayout";
-import { NotFound } from "pages/NotFound";
+import axios from 'axios';
 
 
-//! Так НЕ РАБОТАЕТ!!!
-//! Critical dependency: the request of a dependency is an expression
-//! Критическая зависимость: запрос зависимости является выражением
-// const createAsyncComponent = (path) => lazy(() => import(path));
-
-// const Home = createAsyncComponent("pages/Home");
-// const About = createAsyncComponent("pages/About");
-//   const Mission = createAsyncComponent("components/Mission");
-//   const Team = createAsyncComponent("components/Team");
-//   const Reviews = createAsyncComponent("components/Reviews");
-// const Products = createAsyncComponent("pages/Products");
-//   const ProductDetails = createAsyncComponent("pages/ProductDetails");
-
-
-//* Так  РАБОТАЕТ!!!
-const Home = lazy(() => import("pages/Home"));
-const About = lazy(() => import("pages/About"));
-  const Mission = lazy(() => import("components/Mission"));
-  const Team = lazy(() => import("components/Team"));
-  const Reviews = lazy(() => import("components/Reviews"));
-const Products = lazy(() => import("pages/Products"));
-  const ProductDetails = lazy(() => import("pages/ProductDetails"));
-  
-
-
-
-//todo ==> до Разделение кода
-// import { SharedLayout } from "./SharedLayout";
-//   import { Home } from "pages/Home";
-//   import { About } from "pages/About";
-//     import { Mission } from "components/Mission";
-//     import { Team } from "components/Team";
-//     import { Reviews } from "components/Reviews";
-//   import { Products } from "pages/Products";
-//     import { ProductDetails } from "pages/ProductDetails";
+// import { SharedLayout } from "components/SharedLayout";
 // import { NotFound } from "pages/NotFound";
-  
-// import { Container, Header, Logo, Link } from "./SharedLayout.styled";
+
+
 
 
 export const App = () => {
+
+//! pixabay.com  
+//! Формируем строку URL-запроса:
+  const query = "cat"
+  const API_KEY = '28759369-3882e1068ac26fe18d14affeb';
+  const BASE_URL = 'https://pixabay.com/api/';
+  const page = 1;
+  const per_page = 12;
+  const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&page=${page}&per_page=${per_page}`; //! with API_KEY
+
+  //! pixabay.com
+  // async function fetchPixabay() {
+  //   const response = await axios.get(url)
+  //   const { total } = await response.data
+  //   console.log("response.data: ", response.data); //!
+  //   console.log("total: ", total); //!
+  //   return total;
+  // }
+  
+  // const request1 = fetchPixabay()
+  //   .then(res => console.log("res: ", res)); //!
+  
+  // console.log("fetchPixabay request1: ", request1); //!
+
+
+
+
+
+
+
+//! pixabay.com
+async function fetchPixabay() {
+    const response = await axios.get("https://api.themoviedb.org/3/movie/550?api_key=41b230c5977baa736e324532e16fdadb")
+    const all = await response.data
+    console.log("response.data: ", response.data); //!
+    console.log("all: ", all); //!
+    return response.data;
+    }
+  
+  const request1 = fetchPixabay()
+    .then(res => console.log("res: ", res)); //!
+  
+  console.log("fetchPixabay request1: ", request1); //!
+
+
+
   return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />}>
-          <Route path="mission" element={<Mission />} />
-          <Route path="team" element={<Team />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="products" element={<Products />} />
-          <Route path="products/:id" element={<ProductDetails />} />
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <div>
+      запрос
+      {/* {request1}  */}
+    </div>
   );
 };
 
 
 
 
-
-
-//todo  ==> до Индексные маршруты
-// export const App = () => {
-//   return (
-//     <Container>
-
-//       <Header>
-//         <Logo>
-//           <span role="img" aria-label="computer icon">
-//             💻
-//           </span>{" "}
-//           GoMerch Store
-//         </Logo>
-
-//         <nav>
-//           <Link to="/">Home</Link>
-//           <Link to="/about">About</Link>
-//           <Link to="/products">Products</Link>
-//         </nav>
-//       </Header>
-      
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-
-//         {/* <Route path="/about" element={<About />} /> //! */}
-//         <Route path="/about" element={<About />}>
-//           <Route path="mission" element={<Mission />} />
-//           <Route path="team" element={<Team />} />
-//           <Route path="reviews" element={<Reviews />} />
-//         </Route>
-
-//         <Route path="/products" element={<Products />} />
-
-//         <Route path="/products/:id" element={<ProductDetails />} />
-
-//         <Route path="*" element={<NotFound />} />
-//       </Routes>
-//     </Container>
-//   );
-// };
