@@ -1,7 +1,7 @@
 import { Routes, Route, Link, NavLink  } from "react-router-dom";
 
 import { SplashScreenReact } from 'pages/SplashScreenReact';
-import { About } from 'pages/About';
+import { About } from 'pages/Movies';
 import { NotFound } from 'pages/NotFound';
 
 import styled from "styled-components";

@@ -1,6 +1,5 @@
 
-
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <main style={{ textAlign: "center" }}>
       <b style={{ fontSize: 64 }}>404</b>
@@ -8,3 +7,5 @@ export const NotFound = () => {
     </main>
   );
 };
+
+export default NotFound;

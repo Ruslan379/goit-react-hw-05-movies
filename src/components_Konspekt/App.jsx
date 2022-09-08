@@ -21,7 +21,7 @@ import { NotFound } from "pages/NotFound";
 
 //* Так  РАБОТАЕТ!!!
 const Home = lazy(() => import("pages/Home"));
-const About = lazy(() => import("pages/About"));
+const About = lazy(() => import("pages/Movies"));
   const Mission = lazy(() => import("components/Mission"));
   const Team = lazy(() => import("components/Team"));
   const Reviews = lazy(() => import("components/Reviews"));

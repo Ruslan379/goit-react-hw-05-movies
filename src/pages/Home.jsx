@@ -8,18 +8,15 @@ import { toast } from 'react-toastify';
 
 import { getTrendingAllDay } from "../fakeAPI";
 
-
 // import { Container, CardWrapper, ProductName } from "components/ProductList.styled";
 
 
 
 
-
-export const Home = () => {
+const Home = () => {
   //! useState ===> **** (аналог this.state.****)
   const [results, setResults] = useState([]);
   // const [error, setError] = useState(false);
-
 
   useEffect(() => {
     // Первый рендер, если results - это пустая строка, то НЕ ДЕЛАЕМ HTTP-запрос
@@ -79,18 +76,4 @@ export default Home;
 
 
 
-
-// const Home = () => {
-//   return (
-//     <main>
-//       <h1>Welcome</h1>
-//       <img src="https://via.placeholder.com/960x240" alt="" />
-//       <p>
-//         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-//         laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-//         voluptatum voluptate.
-//       </p>
-//     </main>
-//   );
-// };
 

@@ -2,10 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 
 
-import { Home } from "pages/Home";
-import { NotFound } from "pages/NotFound";
-// import { Movies } from "pages/Products";
-// import { MoviesDetails } from "pages/ProductDetails";
+import Home from "pages/Home";
+import Movies from "pages/Movies";
+// import MoviesDetails  from "pages/MoviesDetails";
+import NotFound from "pages/NotFound";
 
 import { Container, Header, Link } from "./App.styled";
 
@@ -21,8 +21,14 @@ export const App = () => {
       </Header>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/movies" element={<Movies />} /> */}
+        <Route path="/movies" element={<Movies />} />
         {/* <Route path="/movies/:id" element={<MoviesDetails />} /> */}
+
+        {/* <Route path="/movies/:id" element={<MoviesDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route> */}
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Container>
@@ -40,21 +46,7 @@ export const App = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//todo  OLD
 // import axios from 'axios';
 
 
