@@ -14,6 +14,8 @@ export const App = () => {
   const BASE_URL = 'https://api.themoviedb.org/3';
   const API_KEY = '41b230c5977baa736e324532e16fdadb';
 
+  // const API_KEY = '28759369-3882e1068ac26fe18d14affeb'; //! не мой!
+
   const END_POINTS_1 = "trending/all/day" //!  /trending/all/day ==> список самых популярных фильмов на сегодня для создания коллекции на главной странице.
   
   const END_POINTS_2 = "search/movie" //!  /search/search-movies ==> поиск кинофильма по ключевому слову на странице фильмов.
@@ -58,8 +60,7 @@ export const App = () => {
   // const response = await axios.get("https://api.themoviedb.org/3/movie/550?api_key=41b230c5977baa736e324532e16fdadb") //! пример
   // const response = await axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=41b230c5977baa736e324532e16fdadb") //!  /trending/all/day
   
-  const response = await axios.get(url_5) //!  /trending/all/day ==> список самых популярных фильмов на сегодня для создания коллекции на главной странице.
-    // const all = await response.data
+  const response = await axios.get(url_5) //!  
     console.log("response.data: ", response.data); //!
     // console.log("all: ", all); //!
 
