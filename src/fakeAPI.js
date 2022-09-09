@@ -75,17 +75,12 @@ export async function getTrendingAllDay() {
 //! 3 
 export async function getMovieDetails(movie_id) {
     const response = await axios.get(`${BASE_URL}/${END_POINTS_3}/${movie_id}?api_key=${API_KEY}&language=en-US`) //!
-    const all = await response.data //?
+    // const all = await response.data //?
     // console.log("axios response.data: ", response.data); //!
-    console.log("getMovieDetails all: ", all); //?
+    // console.log("getMovieDetails all: ", all); //?
 
-    // const { results } = response.data //!  /trending/all/day ==> список самых популярных фильмов на сегодня
-    // console.log("axios results: ", results); //!
-    // console.log("axios total_pages: ", total_pages); //!
-
-    // return total_pages;
-    // return response.data;
-    return all;
+    // return all;
+    return response.data;
 }
 
 

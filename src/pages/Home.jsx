@@ -29,15 +29,13 @@ const Home = () => {
           // if (results.length === 0) {  
             // toast.warning(`Нет такой темы`); 
             // setHits([]);
-            // setIsLoading(false);
             // return;
           // } else {
             // if (page === 1) {
             //   toast.success(`По вашей теме найдено ${totalHits} изображений`, { autoClose: 3000 });
             // };
               setResults(prevState => [...prevState, ...results]);
-              // setIsLoading(false);
-              // setShowButton(true);
+
             // };
           // endOfCollection - это цифра еще НЕ ПРОСМОТРЕННЫХ элементов коллекции
           // console.log("endOfCollection: ", endOfCollection); //!

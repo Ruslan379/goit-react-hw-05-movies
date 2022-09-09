@@ -7,4 +7,7 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
+    /* display: flex; */
+    /* margin-left: 20px; */
+    /* border: solid 1px; */
 }
