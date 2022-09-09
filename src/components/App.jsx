@@ -12,11 +12,11 @@ import Reviews from "components/Reviews";
 import { SharedLayout } from "components/SharedLayout";
 import NotFound from "pages/NotFound";
 
-import { Container } from "components/App.styled";
+// import { Container } from "components/App.styled";
 
 export const App = () => {
   return (
-    <Container>
+    <>
       <ToastContainer autoClose={1500} theme={"colored"} />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -31,7 +31,7 @@ export const App = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </Container>
+    </>
   );
 };
 
