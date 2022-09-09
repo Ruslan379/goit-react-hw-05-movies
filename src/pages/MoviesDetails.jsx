@@ -23,11 +23,11 @@ const MoviesDetails = () => {
     useEffect(() => {
     getMovieDetails(movie_id)
         .then(( movieDetails ) => { 
-            console.log("getTrendingAllDa movieDetails: ", movieDetails); //!
+            // console.log("getTrendingAllDa movieDetails: ", movieDetails); //!
             setMovieDetails(movieDetails);
             setYearDate(movieDetails.release_date.substr(0, 4));
             setUserScore((movieDetails.vote_average * 10).toFixed(0));
-            console.log("getTrendingAllDa movieDetails.genres: ", movieDetails.genres); //!
+            // console.log("getTrendingAllDa movieDetails.genres: ", movieDetails.genres); //!
 
             // const genres = movieDetails.genres.map(item => item.name); //?
             // setGenres(movieDetails.genres.map(item => (Object.values(item)))); //! ТАК НЕЛЬЗЯ!!!
@@ -36,7 +36,7 @@ const MoviesDetails = () => {
 
             // setGenresAll(genres.join(", ")); //!!! замена ниже:
             setGenresAll((movieDetails.genres.map(item => item.name)).join(" ")); //!!!
-            console.log("genresAll: ", genresAll); //!
+            // console.log("genresAll: ", genresAll); //!
         })
         .catch(error => {
             // setError(error.message);
