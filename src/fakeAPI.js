@@ -83,6 +83,21 @@ export async function getMovieDetails(movie_id) {
     return response.data;
 }
 
+
+
+//! 4 
+export async function getMovieCast(movie_id) {
+    const response = await axios.get(`${BASE_URL}/${END_POINTS_4}/${movie_id}/${CREDITS}?api_key=${API_KEY}&language=en-US`) //!
+    // const all = await response.data //?
+    // console.log("axios response.data: ", response.data); //!
+    // console.log("getMovieDetails all: ", all); //?
+
+    // return all;
+    return response.data;
+}
+
+
+
 //! 5 
 export async function getMovieReviews(movie_id) {
     const response = await axios.get(`${BASE_URL}/${END_POINTS_5}/${movie_id}/${REVIEWS}?api_key=${API_KEY}&language=en-US&page=${page}`) //!

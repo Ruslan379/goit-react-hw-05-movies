@@ -19,9 +19,9 @@ const Reviews = () => {
     useEffect(() => {
     getMovieReviews(movie_id)
         .then(( movieReviews ) => { 
-            // console.log("getTrendingAllDa movieReview: ", movieReviews); //!
+            // console.log("getMovieReviews movieReview: ", movieReviews); //!
             setMovieReviews(movieReviews.results);
-            console.log("getTrendingAllDa movieReview: ", movieReviews); //!
+            console.log("getMovieReviews movieReview: ", movieReviews); //!
             
         })
         .catch(error => {
@@ -31,18 +31,23 @@ const Reviews = () => {
         })
     }, [movie_id]);
 
-    // console.log("getTrendingAllDa movieReview: ", movieReviews); //!
+    // console.log("getMovieReviews movieReview: ", movieReviews); //!
 
     return (
         <section>
-            <ul>
-                {movieReviews.map(({ author, content }) => (
-                    <li key={author}>
-                        <h4>{`Author: ${author}`}</h4>
-                        <p>{content}</p>
-                    </li>
-                ))}
-            </ul>
+            {(movieReviews.length)
+                ?
+                <ul>
+                    {movieReviews.map(({ author, content }) => (
+                        <li key={author}>
+                            <h4>{`Author: ${author}`}</h4>
+                            <p style={{ paddingRight: "24px" }}>{content}</p>
+                        </li>
+                    ))}
+                </ul>
+                :
+                <p style={{ marginLeft: "10px" }}>We don't have any reviews for this movie.</p>
+            } 
         </section>
     );
 };
