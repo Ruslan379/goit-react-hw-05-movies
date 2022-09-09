@@ -4,7 +4,10 @@ import { ToastContainer } from 'react-toastify';
 
 import Home from "pages/Home";
 import Movies from "pages/Movies";
-// import MoviesDetails  from "pages/MoviesDetails";
+import MoviesDetails from "pages/MoviesDetails";
+import Cast from "components/Cast";
+import Reviews from "components/Reviews";
+
 import NotFound from "pages/NotFound";
 
 import { Container, Header, Link } from "./App.styled";
@@ -24,10 +27,10 @@ export const App = () => {
         <Route path="/movies" element={<Movies />} />
         {/* <Route path="/movies/:id" element={<MoviesDetails />} /> */}
 
-        {/* <Route path="/movies/:id" element={<MoviesDetails />}>
+        <Route path="/movies/:id" element={<MoviesDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
-        </Route> */}
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>
