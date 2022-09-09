@@ -16,7 +16,7 @@ const query = "avatar"
 const page = 1; //? можно добавить в строку запроса
 
 const END_POINTS_3 = "movie" //!  /movies/get-movie-details ==> запрос полной информации о фильме для страницы кинофильма.
-const movie_id = 19995
+const movie_id = 616037
 
 const END_POINTS_4 = "movie" //!  /movies/get-movie-credits  ==> запрос информации об актёрском составе для страницы кинофильма.
 const CREDITS = "credits"
@@ -45,9 +45,12 @@ console.log("url_5: ", url_5); //!
 
 //!-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Формируем URL-запросы:
+//! 1 
 export async function getTrendingAllDay() {
+
     //                                   https://api.themoviedb.org/3/movie/19995/reviews?api_key=41b230c5977baa736e324532e16fdadb&language=en-US&page=1
     //                                   https://api.themoviedb.org/3/movie/19995/credits?api_key=41b230c5977baa736e324532e16fdadb&language=en-US
+    //!                                  https://api.themoviedb.org/3/movie/19995/images?api_key=41b230c5977baa736e324532e16fdadb&language=en-US
     //                                   https://api.themoviedb.org/3/movie/19995?api_key=41b230c5977baa736e324532e16fdadb&language=en-US
     // const response = await axios.get("https://api.themoviedb.org/3/authentication/token/new?api_key=41b230c5977baa736e324532e16fdadb") //!  /a temporary request token
     // const response = await axios.get("https://api.themoviedb.org/3/movie/550?api_key=41b230c5977baa736e324532e16fdadb") //! пример
@@ -69,7 +72,21 @@ export async function getTrendingAllDay() {
 
 
 
+//! 3 
+export async function getMovieDetails(movie_id) {
+    const response = await axios.get(`${BASE_URL}/${END_POINTS_3}/${movie_id}?api_key=${API_KEY}&language=en-US`) //!
+    const all = await response.data //?
+    // console.log("axios response.data: ", response.data); //!
+    console.log("getMovieDetails all: ", all); //?
 
+    // const { results } = response.data //!  /trending/all/day ==> список самых популярных фильмов на сегодня
+    // console.log("axios results: ", results); //!
+    // console.log("axios total_pages: ", total_pages); //!
+
+    // return total_pages;
+    // return response.data;
+    return all;
+}
 
 
 
