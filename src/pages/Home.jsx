@@ -60,9 +60,10 @@ const Home = () => {
       <div>
             {results.map((result) => (
                 <div key={result.id}>
-                    <Link to={`movies/${result.id}`}>
-                        <p>{result.title || result.name}</p>
-                    </Link>
+                  <Link to={`movies/${result.id}`}>
+                    {/* <p>{result.title}</p> */}
+                    <p>{result.title || result.name}</p>
+                  </Link>
                 </div>
             ))}
         </div>

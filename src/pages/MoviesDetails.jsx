@@ -39,6 +39,7 @@ const MoviesDetails = () => {
             // setGenresAll(genres.join(", ")); //!!! замена ниже:
             setGenresAll((movieDetails.genres.map(item => item.name)).join(" ")); //!!!
             // console.log("genresAll: ", genresAll); //!
+            console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
             })
             .catch(error => {
             setError(error.message);
@@ -72,7 +73,7 @@ const MoviesDetails = () => {
 
                         <div style={{ marginLeft: "24px", paddingRight: "24px" }}>
                             {/* <h1>Информация о фильме</h1> */}
-                            <h2>{`${movieDetails.title || movieDetails.name} (${yearDate})`}</h2>
+                            <h2 style={{ color: "#571616" }}>{`${movieDetails.title || movieDetails.name} (${yearDate})`}</h2>
                             <p>{`User Score: ${userScore}%`}</p>
                             <h3>Overview</h3>
                             <p>{movieDetails.overview}</p>

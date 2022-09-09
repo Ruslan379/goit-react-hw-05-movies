@@ -7,7 +7,6 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
-    /* display: flex; */
-    /* margin-left: 20px; */
-    /* border: solid 1px; */
+    /* box-shadow: 7px 7px 3px 0px rgba(0, 0, 0, 0.50); */
+
 }

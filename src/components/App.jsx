@@ -9,28 +9,27 @@ import MoviesDetails from "pages/MoviesDetails";
 import Cast from "components/Cast";
 import Reviews from "components/Reviews";
 
+import { SharedLayout } from "components/SharedLayout";
 import NotFound from "pages/NotFound";
 
-import { Container, Header, Link } from "./App.styled";
+import { Container } from "components/App.styled";
 
 export const App = () => {
   return (
     <Container>
       <ToastContainer autoClose={1500} theme={"colored"} />
-      <Header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
-        </nav>
-      </Header>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:id" element={<MoviesDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+        
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:id" element={<MoviesDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </Container>
   );
@@ -42,22 +41,44 @@ export const App = () => {
 
 
 
+//todo OLD (до SharedLayout)
+// export const App = () => {
+//   return (
+//     <Container>
+//       <ToastContainer autoClose={1500} theme={"colored"} />
+//       <Header>
+//         <nav>
+//           <Link to="/">Home</Link>
+//           <Link to="/movies">Movies</Link>
+//         </nav>
+//       </Header>
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/movies" element={<Movies />} />
+//         <Route path="/movies/:id" element={<MoviesDetails />}>
+//           <Route path="cast" element={<Cast />} />
+//           <Route path="reviews" element={<Reviews />} />
+//         </Route>
+//         <Route path="*" element={<NotFound />} />
+//       </Routes>
+//     </Container>
+//   );
+// };
 
 
 
 
 
-//todo  OLD
-// import axios from 'axios';
-
-
-// import { SharedLayout } from "components/SharedLayout";
-// import { NotFound } from "pages/NotFound";
 
 
 
 
 
+
+
+
+
+//todo  OLD (НАЧАЛО)
 // export const App = () => {
 //!-----------------------------------------------------------------------------------------------------------------------------------------------------------
   //! Константы для URL-запросов:
@@ -148,57 +169,5 @@ export const App = () => {
 //     </div>
 //   );
 // };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//! pixabay.com
-//! Формируем строку URL-запроса:
-  // const query = "cat"
-  // const API_KEY = '28759369-3882e1068ac26fe18d14affeb';
-  // const BASE_URL = 'https://pixabay.com/api/';
-  // const page = 1;
-  // const per_page = 12;
-  // const url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&page=${page}&per_page=${per_page}`; //! with API_KEY
-  // console.log("url: ", url);
-
-  //! pixabay.com
-  // async function fetchPixabay() {
-  //   const response = await axios.get(url)
-  //   const { total } = await response.data
-  //   console.log("response.data: ", response.data); //!
-  //   console.log("total: ", total); //!
-  //   return total;
-  // }
-  
-  // const request1 = fetchPixabay()
-  //   .then(res => console.log("res: ", res)); //!
-  
-  // console.log("fetchPixabay request1: ", request1); //!
-
-
-
-
-//? Работа с Movie Database API part 1 ==> E:\GoIT\Code\ex-cinema-main
-// function server(url, settings = {}){
-//     const defaultPath = 'https://api.themoviedb.org/3/movie';
-//     const imagePath = 'https://image.tmdb.org/t/p/w500/';
-//     const API_KEY = 'c6f82dc5dce289d673c19d018e6b6c47';
-//     const language = 'ru'
-//     const _url = `${ defaultPath }/${url}?api_key=${API_KEY}&language=${language}&region=${language}`;
-//     return fetch(_url).then(res => {
-//         return res.json();
-//     })
-// }
 
 
