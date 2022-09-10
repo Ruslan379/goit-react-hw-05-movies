@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
@@ -12,22 +12,38 @@ import Searchbar from 'components/Searchbar';
 
 const Movies = () => {
   //! useState ===> **** (аналог this.state.****)
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState(''); //! Уже НЕ НАДО
   const [results, setResults] = useState([]);
   // const [error, setError] = useState(false);
 
-  //! Принимаем (query ===> querySearchbar) из Searchbar
-  const handleFormSubmit = (querySearchbar) => {
-    // console.log("querySearchbar: ", querySearchbar); //!
-    setQuery(querySearchbar);
+  //! Хук useSearchParams - записыват значение из инпута (из query) 
+  //! в URL - строку запроса и хранит его всвоем объекте параметров
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+
+  const changeFilter = value => {
+    setSearchParams(value !== '' ? { query: value } : {});
   };
 
-  //! Поиск фильма - query-запросу из формы:
-  // const query = "qrty" //? должен выдать сообщение: `Нет такого фильма: qrty`
-  // const query = " " //? должен выдать сообщение об ошике: `Ошибка запроса`
-  // const query = "avatar"
-  // const query = "Beast"
+
+  const query = searchParams.get("query") ?? '';
+  console.log(query);
+
+
+
+  //! Уже НЕ НАДО ==> НЕ ТАК, ниже смотри
+  //! Принимаем (query ===> querySearchbar) из Searchbar
+  // const handleFormSubmit = (querySearchbar) => {
+  //   // console.log("querySearchbar: ", querySearchbar); //!
+  //   setQuery(querySearchbar);
+  // };
+
+
   
+
+
+
+
 
 
   useEffect(() => {
@@ -73,7 +89,8 @@ const Movies = () => {
   return (
     <main>
       {/* <h2>Поиск фильма: {query}</h2> */}
-      <Searchbar onSubmit={handleFormSubmit} />
+      {/* <Searchbar onSubmit={handleFormSubmit} /> */}
+      <Searchbar onSubmit={changeFilter} />
 
       {results.length > 0 && (
         <div>
