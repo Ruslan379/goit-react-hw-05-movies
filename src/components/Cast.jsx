@@ -14,14 +14,14 @@ const Cast = () => {
 
     const { id } = useParams();
     const movie_id = Number(id); //? 
-    console.log("Reviews movie_id=(id): ", movie_id); //!
+    // console.log("Cast movie_id=(id): ", movie_id); //!
 
     useEffect(() => {
     getMovieCast(movie_id)
         .then(( movieCast ) => { 
             // console.log("getMovieCast movieCast: ", movieCast); //!
             setMovieCast(movieCast.cast);
-            console.log("getMovieCast movieCast.cast: ", movieCast.cast); //!
+            // console.log("getMovieCast movieCast.cast: ", movieCast.cast); //!
             
         })
         .catch(error => {
@@ -31,7 +31,7 @@ const Cast = () => {
         })
     }, [movie_id]);
 
-    console.log("getMovieCast movieCast.cast: ", movieCast.cast); //!
+    // console.log("getMovieCast movieCast.cast: ", movieCast.cast); //!
 
     return (
       <section>

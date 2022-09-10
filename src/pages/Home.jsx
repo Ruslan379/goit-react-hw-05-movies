@@ -25,7 +25,7 @@ const Home = () => {
     // };
     getTrendingAllDay()
       .then(( results ) => { 
-        console.log("getTrendingAllDa results: ", results); //!
+        // console.log("getTrendingAllDa results: ", results); //!
           // if (results.length === 0) {  
             // toast.warning(`Нет такой темы`); 
             // setHits([]);

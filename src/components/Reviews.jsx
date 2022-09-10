@@ -14,14 +14,14 @@ const Reviews = () => {
 
     const { id } = useParams();
     const movie_id = Number(id); //? 
-    console.log("Reviews movie_id=(id): ", movie_id); //!
+    // console.log("Reviews movie_id=(id): ", movie_id); //!
 
     useEffect(() => {
     getMovieReviews(movie_id)
         .then(( movieReviews ) => { 
             // console.log("getMovieReviews movieReview: ", movieReviews); //!
             setMovieReviews(movieReviews.results);
-            console.log("getMovieReviews movieReview: ", movieReviews); //!
+            // console.log("getMovieReviews movieReview: ", movieReviews); //!
             
         })
         .catch(error => {

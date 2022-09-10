@@ -18,7 +18,7 @@ const Movies = () => {
 
   //! Принимаем (query ===> querySearchbar) из Searchbar
   const handleFormSubmit = (querySearchbar) => {
-    console.log("querySearchbar: ", querySearchbar);
+    // console.log("querySearchbar: ", querySearchbar); //!
     setQuery(querySearchbar);
   };
 
@@ -28,24 +28,19 @@ const Movies = () => {
   // const query = "avatar"
   // const query = "Beast"
   
-  // //! Анализ props { queryNew } и запись его в state (query)
-  // useEffect(() => {
-  //   setPage(1);
-  //   setQuery(queryNew);
-  //   setHits([]);
-  //   }, [queryNew]);
+
 
   useEffect(() => {
     //! Первый рендер, если query - это пустая строка, то НЕ ДЕЛАЕМ HTTP-запрос
     if (!query) {
       return;
     };
-
+    //! Запрос, название фильма - это query
     getSearchMovies(query)
       .then(( results ) => { 
-        console.log("getTrendingAllDa results: ", results); //!
+        // console.log("getSearchMovies results: ", results); //!
         
-        //! Проверка на неправильній запрос
+        //! Проверка на неправильный запрос
         if (results.length === 0) {
           toast.warning(`Нет такого фильма: ${query}`);
           setResults([]);

@@ -1,16 +1,15 @@
 import { useState } from 'react';
-// import { useSearchParams } from "react-router-dom";
-// import PropTypes from 'prop-types';
-
 import { ImSearch } from 'react-icons/im';
+import PropTypes from 'prop-types';
+// import { useSearchParams } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
-// import css from 'components/Searchbar/Searchbar.module.css' 
+import css from 'components/Searchbar.module.css' 
 
 
 
-const Searchbar = (onSubmit) => {
+const Searchbar = ({onSubmit}) => {
   //! useState ===> query (аналог this.state.query)
   const [query, setQuery] = useState('');
 
@@ -34,7 +33,7 @@ const Searchbar = (onSubmit) => {
       event.target.reset()
       return;
     };
-    console.log(query);
+    // console.log(query); //!
     //! Передача значения (query) в App
     onSubmit(query); //?
 
@@ -45,14 +44,14 @@ const Searchbar = (onSubmit) => {
 
   return (
     <header
-      // className={css.Searchbar}
+      className={css.Searchbar}
     >
       <form
-        // className={css.SearchForm}
+        className={css.SearchForm}
         onSubmit={handleSubmit}
       >
         <input
-          // className={css.SearchFormInput}
+          className={css.SearchFormInput}
           type="text"
           name="query"
           autoComplete="off"
@@ -63,7 +62,7 @@ const Searchbar = (onSubmit) => {
 
         <button
           type="submit"
-          // className={css.SearchFormButton}
+          className={css.SearchFormButton}
         >
           <ImSearch style={{ marginRight: 8 }} />
           <span
@@ -78,12 +77,13 @@ const Searchbar = (onSubmit) => {
 }
 
 
-
-// Searchbar.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Searchbar;
+
+
 
 
 
