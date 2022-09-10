@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-// import { Link, useSearchParams, useLocation } from 'react-router-dom';
+// import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
@@ -11,6 +11,7 @@ import Searchbar from 'components/Searchbar';
 
 
 const Movies = () => {
+  const location = useLocation();
   //! useState ===> **** (аналог this.state.****)
   // const [query, setQuery] = useState(''); //! Уже НЕ НАДО
   const [results, setResults] = useState([]);
@@ -85,6 +86,11 @@ const Movies = () => {
       })
   }, [query]);
   
+
+  //! Проверка results на пустой объект
+  if (!results) {
+    return null;  
+  }
   
   return (
     <main>
@@ -92,10 +98,12 @@ const Movies = () => {
       {/* <Searchbar onSubmit={handleFormSubmit} /> */}
       <Searchbar onSubmit={changeFilter} />
 
+      {/* <Link to="/">Go back</Link> */}
+
       {results.length > 0 && (
         <div>
           {results.map(({ id, title, name }) => (
-                    <Link key={id} to={`${id}`}>
+                    <Link key={id} to={`${id}`} state={{ from: location }}>
                       {/* <p>{title}</p> */}
                       <p>{title || name}</p>
                     </Link>

@@ -33,6 +33,13 @@ const Reviews = () => {
 
     // console.log("getMovieReviews movieReview: ", movieReviews); //!
 
+
+    //! Проверка results на пустой объект
+    if (!movieReviews) {
+        return null;  
+    }
+
+
     return (
         <section>
             {(movieReviews.length)

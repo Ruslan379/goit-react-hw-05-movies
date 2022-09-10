@@ -33,18 +33,23 @@ const Cast = () => {
 
     // console.log("getMovieCast movieCast.cast: ", movieCast.cast); //!
 
+
+    //! Проверка movieCast на пустой объект
+    if (!movieCast) {
+        return null;  
+    }
+
     return (
-      <section>
+        <section>
             <ul>
                 {movieCast.map(({ profile_path, original_name, character }) => (
-                  <li key={original_name}>
-                    <img src={`https://image.tmdb.org/t/p/w92${profile_path}`} alt="" />
+                    <li key={original_name}>
+                        <img src={`https://image.tmdb.org/t/p/w92${profile_path}`} alt="" />
                         <h4>{original_name}</h4>
                         <p>{`Character: ${character}`}</p>
                     </li>
                 ))}
             </ul>
-
         </section>
     );
 };

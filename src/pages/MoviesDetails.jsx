@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, Outlet } from "react-router-dom";
-import { useParams } from "react-router-dom";
+// import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
@@ -9,6 +9,7 @@ import { getMovieDetails } from "../fakeAPI";
 
 
 const MoviesDetails = () => {
+    const location = useLocation();
     //! useState ===> **** (аналог this.state.****)
     const [movieDetails, setMovieDetails] = useState({});
     const [yearDate, setYearDate] = useState("");
@@ -55,6 +56,8 @@ const MoviesDetails = () => {
     //! Дестуктуризируем нужныесв-ва из объекта movieDetails 
     const { poster_path, title, name, overview } = movieDetails;
 
+    const backLinkHref = location.state?.from ?? '/';
+
 
     // console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
     // const basicURL = "https://image.tmdb.org/t/p/original";
@@ -75,7 +78,9 @@ const MoviesDetails = () => {
             {/* {!error && movieDetails && ( //! Проверка movieDetails на пустой объект */}
             {!error && (
                 <div style={{ border: "solid 1px", boxShadow: "7px 7px 3px 0px rgba(0,0,0,0.50)" }}>
-            
+                    
+                    <Link to={backLinkHref}>Go back</Link>
+
                     <div style={{ display: "flex" }}>
                         {/* <img src="https://image.tmdb.org/t/p/original/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg" alt="" /> */}
                         <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
