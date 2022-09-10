@@ -5,22 +5,35 @@ import { toast } from 'react-toastify';
 
 
 import { getSearchMovies } from "../fakeAPI";
+import Searchbar from 'components/Searchbar';
 
 
 
 
 const Movies = () => {
   //! useState ===> **** (аналог this.state.****)
+  const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   // const [error, setError] = useState(false);
+
+  //! Принимаем (query ===> querySearchbar) из Searchbar
+  const handleFormSubmit = (querySearchbar) => {
+    console.log("querySearchbar: ", querySearchbar);
+    setQuery(querySearchbar);
+  };
 
   //! Поиск фильма - query-запросу из формы:
   // const query = "qrty" //? должен выдать сообщение: `Нет такого фильма: qrty`
   // const query = " " //? должен выдать сообщение об ошике: `Ошибка запроса`
   // const query = "avatar"
-  const query = "Beast"
+  // const query = "Beast"
   
-  
+  // //! Анализ props { queryNew } и запись его в state (query)
+  // useEffect(() => {
+  //   setPage(1);
+  //   setQuery(queryNew);
+  //   setHits([]);
+  //   }, [queryNew]);
 
   useEffect(() => {
     //! Первый рендер, если query - это пустая строка, то НЕ ДЕЛАЕМ HTTP-запрос
@@ -31,6 +44,7 @@ const Movies = () => {
     getSearchMovies(query)
       .then(( results ) => { 
         console.log("getTrendingAllDa results: ", results); //!
+        
         //! Проверка на неправильній запрос
         if (results.length === 0) {
           toast.warning(`Нет такого фильма: ${query}`);
@@ -58,12 +72,14 @@ const Movies = () => {
           console.log(error.message); //!
           toast.error(`Ошибка запроса: ${error.message}`, { position: "top-center", autoClose: 2000 } ); 
       })
-  }, []);
+  }, [query]);
   
   
   return (
     <main>
-      <h1>Поиск фильма: {query}</h1>
+      {/* <h2>Поиск фильма: {query}</h2> */}
+      <Searchbar onSubmit={handleFormSubmit} />
+
       {results.length > 0 && (
         <div>
           {results.map(({ id, title, name }) => (
