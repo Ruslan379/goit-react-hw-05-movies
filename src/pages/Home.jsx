@@ -71,6 +71,12 @@ const Home = () => {
         </div>
     </main>
   );
+};
+
+export default Home;
+
+
+
 
   //todo old            
   // return (
@@ -88,9 +94,7 @@ const Home = () => {
   //       </div>
   //   </main>
   // );
-};
 
-export default Home;
 
 
 

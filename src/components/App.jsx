@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+// import { Route, Routes, Navigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -20,6 +21,7 @@ export const App = () => {
       <ToastContainer autoClose={1500} theme={"colored"} />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
+          {/* <Route index element={<Navigate to="movies" />} /> */}
           <Route index element={<Home />} />
         
           <Route path="/movies" element={<Movies />} />

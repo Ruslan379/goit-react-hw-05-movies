@@ -12,11 +12,11 @@ const API_KEY = '41b230c5977baa736e324532e16fdadb';
 const END_POINTS_1 = "trending/all/day" //!  /trending/all/day ==> список самых популярных фильмов на сегодня для создания коллекции на главной странице.
 
 const END_POINTS_2 = "search/movie" //!  /search/search-movies ==> поиск кинофильма по ключевому слову на странице фильмов.
-const query = "avatar"
+const query = "avatar" //?
 const page = 1; //? можно добавить в строку запроса
 
 const END_POINTS_3 = "movie" //!  /movies/get-movie-details ==> запрос полной информации о фильме для страницы кинофильма.
-const movie_id = 616037
+const movie_id = 616037 //?
 
 const END_POINTS_4 = "movie" //!  /movies/get-movie-credits  ==> запрос информации об актёрском составе для страницы кинофильма.
 const CREDITS = "credits"
@@ -62,6 +62,24 @@ export async function getTrendingAllDay() {
     // console.log("all: ", all); //?
 
     const { results } = response.data //!  /trending/all/day ==> список самых популярных фильмов на сегодня
+    // console.log("axios results: ", results); //!
+    // console.log("axios total_pages: ", total_pages); //!
+
+    // return total_pages;
+    // return response.data;
+    return results;
+}
+
+
+
+//! 2 
+export async function getSearchMovies(query) {
+    const response = await axios.get(`${BASE_URL}/${END_POINTS_2}?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`) //!
+    // const all = await response.data //?
+    // console.log("axios response.data: ", response.data); //!
+    // console.log("all: ", all); //?
+
+    const { results } = response.data //*  /search/search-movies ==> поиск кинофильма по ключевому слову на странице фильмов.
     // console.log("axios results: ", results); //!
     // console.log("axios total_pages: ", total_pages); //!
 
