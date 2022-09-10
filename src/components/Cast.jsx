@@ -13,11 +13,11 @@ const Cast = () => {
     
 
     const { id } = useParams();
-    const movie_id = Number(id); //? 
+    // const movie_id = Number(id); //? 
     // console.log("Cast movie_id=(id): ", movie_id); //!
 
     useEffect(() => {
-    getMovieCast(movie_id)
+    getMovieCast(Number(id))
         .then(( movieCast ) => { 
             // console.log("getMovieCast movieCast: ", movieCast); //!
             setMovieCast(movieCast.cast);
@@ -29,7 +29,7 @@ const Cast = () => {
             console.log(error.message); //!
             toast.error(`Ошибка запроса: ${error.message}`, { position: "top-center", autoClose: 2000 } ); 
         })
-    }, [movie_id]);
+    }, [id]);
 
     // console.log("getMovieCast movieCast.cast: ", movieCast.cast); //!
 

@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Home from "pages/Home";
 import Movies from "pages/Movies";
-import MoviesDetails from "components/MoviesDetails";
+import MoviesDetails from "pages/MoviesDetails";
 import Cast from "components/Cast";
 import Reviews from "components/Reviews";
 

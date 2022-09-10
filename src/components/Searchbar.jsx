@@ -33,7 +33,7 @@ const Searchbar = ({onSubmit}) => {
       event.target.reset()
       return;
     };
-    // console.log(query); //!
+    // console.log("query: ", query); //! //!
     //! Передача значения (query) в App
     onSubmit(query); //?
 

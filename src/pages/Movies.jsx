@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
-
+import { Link, useSearchParams } from 'react-router-dom';
+// import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
@@ -27,7 +27,7 @@ const Movies = () => {
 
 
   const query = searchParams.get("query") ?? '';
-  console.log(query);
+  console.log("searchParams query: ", query); //!
 
 
 

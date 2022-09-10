@@ -18,12 +18,12 @@ const MoviesDetails = () => {
     const [error, setError] = useState(false);
 
     const { id } = useParams();
-    const movie_id = Number(id); //? 
+    // const movie_id = Number(id); //? 
     // console.log("movie_id=(id): ", movie_id); //!
 
     useEffect(() => {
         setError(false);
-        getMovieDetails(movie_id)
+        getMovieDetails(Number(id))
             .then(( movieDetails ) => { 
             // console.log("getTrendingAllDa movieDetails: ", movieDetails); //!
             setMovieDetails(movieDetails);
@@ -46,7 +46,7 @@ const MoviesDetails = () => {
             console.log(error.message); //!
             toast.error(`Ошибка запроса: ${error.message}`, { position: "top-center", autoClose: 2000 } ); 
             })
-    }, [movie_id]);
+    }, [id]);
     
     //! Проверка movieDetails на пустой объект
     if (!movieDetails) {
