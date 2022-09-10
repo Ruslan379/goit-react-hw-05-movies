@@ -37,16 +37,24 @@ const MoviesDetails = () => {
             // console.log("genres: ", genres); //!
 
             // setGenresAll(genres.join(", ")); //!!! замена ниже:
-            setGenresAll((movieDetails.genres.map(item => item.name)).join(" ")); //!!!
+            setGenresAll((movieDetails.genres.map(item => item.name)).join(" ")); 
             // console.log("genresAll: ", genresAll); //!
-            console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
+            // console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
             })
             .catch(error => {
             setError(error.message);
             console.log(error.message); //!
             toast.error(`Ошибка запроса: ${error.message}`, { position: "top-center", autoClose: 2000 } ); 
             })
-        }, [movie_id, genresAll]);
+    }, [movie_id]);
+    
+    //! Проверка movieDetails на пустой объект
+    if (!movieDetails) {
+        return null;  
+    }
+    //! Дестуктуризируем нужныесв-ва из объекта movieDetails 
+    const { poster_path, title, name, overview } = movieDetails;
+
 
     // console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
     // const basicURL = "https://image.tmdb.org/t/p/original";
@@ -64,19 +72,20 @@ const MoviesDetails = () => {
                     </div>
             )}
             
+            {/* {!error && movieDetails && ( //! Проверка movieDetails на пустой объект */}
             {!error && (
                 <div style={{ border: "solid 1px", boxShadow: "7px 7px 3px 0px rgba(0,0,0,0.50)" }}>
             
                     <div style={{ display: "flex" }}>
                         {/* <img src="https://image.tmdb.org/t/p/original/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg" alt="" /> */}
-                        <img src={`https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`} alt="" />
+                        <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
 
                         <div style={{ marginLeft: "24px", paddingRight: "24px" }}>
                             {/* <h1>Информация о фильме</h1> */}
-                            <h2 style={{ color: "#571616" }}>{`${movieDetails.title || movieDetails.name} (${yearDate})`}</h2>
+                            <h2 style={{ color: "#571616" }}>{`${title || name} (${yearDate})`}</h2>
                             <p>{`User Score: ${userScore}%`}</p>
                             <h3>Overview</h3>
-                            <p>{movieDetails.overview}</p>
+                            <p>{overview}</p>
                             <h3>Genres</h3>
                             <p>{genresAll}</p>
 

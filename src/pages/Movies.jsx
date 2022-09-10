@@ -1,3 +1,6 @@
+// import { Outlet } from "react-router-dom";  //! ТАК  <MoviesDetails /> будет рендерится ПОД основным текстом в <Movies />
+
+
 const Movies = () => {
   return (
     <main>
@@ -15,6 +18,7 @@ const Movies = () => {
         dolorum illum voluptatum dolores! Quas perferendis quis alias excepturi
         eaque voluptatibus eveniet error, nulla rem iusto?
       </p>
+      {/* <Outlet /> //! ТАК  <MoviesDetails /> будет рендерится ПОД основным текстом в <Movies /> */}
     </main>
   );
 };

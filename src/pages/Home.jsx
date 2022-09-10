@@ -58,17 +58,36 @@ const Home = () => {
     <main>
       <h1>Trending today</h1>
       <div>
-            {results.map((result) => (
-                <div key={result.id}>
-                  <Link to={`movies/${result.id}`}>
-                    {/* <p>{result.title}</p> */}
-                    <p>{result.title || result.name}</p>
+        {results.map(({ id, title, name }) => (
+              // <ul>
+                // <li key={id}>
+                  <Link key={id} to={`movies/${id}`}>
+                    {/* <p>{title}</p> */}
+                    <p>{title || name}</p>
                   </Link>
-                </div>
+              // </li>
+            // </ul>
             ))}
         </div>
     </main>
   );
+
+  //todo old            
+  // return (
+  //   <main>
+  //     <h1>Trending today</h1>
+  //     <div>
+  //           {results.map((result) => (
+  //               <div key={result.id}>
+  //                 <Link to={`movies/${result.id}`}>
+  //                   {/* <p>{result.title}</p> */}
+  //                   <p>{result.title || result.name}</p>
+  //                 </Link>
+  //               </div>
+  //           ))}
+  //       </div>
+  //   </main>
+  // );
 };
 
 export default Home;
