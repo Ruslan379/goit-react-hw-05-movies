@@ -68,7 +68,8 @@ const Movies = () => {
             // if (page === 1) {
             //   toast.success(`По вашей теме найдено ${totalHits} изображений`, { autoClose: 3000 });
             // };
-            setResults(prevState => [...prevState, ...results]);
+        // setResults(prevState => [...prevState, ...results]); //?
+        setResults(results); 
 
             // };
           // endOfCollection - это цифра еще НЕ ПРОСМОТРЕННЫХ элементов коллекции

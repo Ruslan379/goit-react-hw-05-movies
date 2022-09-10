@@ -66,13 +66,12 @@ const MoviesDetails = () => {
 
     // console.log("location.state: ", location.state); //!
     // console.log("location.pathname: ", location.pathname); //!
-    console.log("location.state.from: ", location.state?.from); //!
+    // console.log("location.state.from: ", location.state?.from); //!!!
     
     // const backLinkHref = location.state?.from ?? '/';
 
     const backLinkHref = locationState ?? '/';
-
-    console.log("backLinkHref: ", backLinkHref); //!
+    // console.log("backLinkHref: ", backLinkHref); //!!!
 
 
     // console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
