@@ -1,4 +1,3 @@
- 
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
@@ -16,9 +15,11 @@ const Movies = () => {
   // const [error, setError] = useState(false);
 
   //! Поиск фильма - query-запросу из формы:
-  // const query = " "
+  // const query = "qrty" //? должен выдать сообщение: `Нет такого фильма: qrty`
+  // const query = " " //? должен выдать сообщение об ошике: `Ошибка запроса`
   // const query = "avatar"
   const query = "Beast"
+  
   
 
   useEffect(() => {
@@ -26,12 +27,13 @@ const Movies = () => {
     if (!query) {
       return;
     };
+
     getSearchMovies(query)
       .then(( results ) => { 
         console.log("getTrendingAllDa results: ", results); //!
         //! Проверка на неправильній запрос
         if (results.length === 0) {
-          toast.warning(`Нет такого фильма`);
+          toast.warning(`Нет такого фильма: ${query}`);
           setResults([]);
           return;
         }
@@ -62,14 +64,16 @@ const Movies = () => {
   return (
     <main>
       <h1>Поиск фильма: {query}</h1>
-      <div>
-        {results.map(({ id, title, name }) => (
-                  <Link key={id} to={`${id}`}>
-                    {/* <p>{title}</p> */}
-                    <p>{title || name}</p>
-                  </Link>
-            ))}
+      {results.length > 0 && (
+        <div>
+          {results.map(({ id, title, name }) => (
+                    <Link key={id} to={`${id}`}>
+                      {/* <p>{title}</p> */}
+                      <p>{title || name}</p>
+                    </Link>
+              ))}
         </div>
+      )}
     </main>
   );
 };
