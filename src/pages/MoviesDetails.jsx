@@ -17,6 +17,13 @@ const MoviesDetails = () => {
     // const [genres, setGenres] = useState([]); //?
     const [genresAll, setGenresAll] = useState("");
     const [error, setError] = useState(false);
+    const [locationState, setLocationState] = useState(null);
+    
+    useEffect(() => {
+        if (location.state !== null)  {
+            setLocationState(location.state?.from);
+        }
+    }, [location.state]);
 
     const { id } = useParams();
     // const movie_id = Number(id); //? 
@@ -56,7 +63,16 @@ const MoviesDetails = () => {
     //! Дестуктуризируем нужныесв-ва из объекта movieDetails 
     const { poster_path, title, name, overview } = movieDetails;
 
-    const backLinkHref = location.state?.from ?? '/';
+
+    // console.log("location.state: ", location.state); //!
+    // console.log("location.pathname: ", location.pathname); //!
+    console.log("location.state.from: ", location.state?.from); //!
+    
+    // const backLinkHref = location.state?.from ?? '/';
+
+    const backLinkHref = locationState ?? '/';
+
+    console.log("backLinkHref: ", backLinkHref); //!
 
 
     // console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!

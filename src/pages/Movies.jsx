@@ -52,6 +52,7 @@ const Movies = () => {
     if (!query) {
       return;
     };
+    console.log("useEffect query: ", query); //!
     //! Запрос, название фильма - это query
     getSearchMovies(query)
       .then(( results ) => { 
