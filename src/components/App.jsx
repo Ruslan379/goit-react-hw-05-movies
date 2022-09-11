@@ -1,17 +1,27 @@
 import { Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 // import { Route, Routes, Navigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-import Home from "pages/Home";
-import Movies from "pages/Movies";
-import MoviesDetails from "pages/MoviesDetails";
-import Cast from "components/Cast";
-import Reviews from "components/Reviews";
-
 import { SharedLayout } from "components/SharedLayout";
 import NotFound from "pages/NotFound";
+
+const Home = lazy(() => import("pages/Home"));
+const Movies = lazy(() => import("pages/Movies"));
+const MoviesDetails = lazy(() => import("pages/MoviesDetails"));
+  const Cast = lazy(() => import("components/Cast"));
+  const Reviews = lazy(() => import("components/Reviews"));
+
+  
+
+
+//todo ==> до Разделение кода c lazy и Suspense
+// import Home from "pages/Home";
+// import Movies from "pages/Movies";
+// import MoviesDetails from "pages/MoviesDetails";
+//   import Cast from "components/Cast";
+//   import Reviews from "components/Reviews";
 
 // import { Container } from "components/App.styled";
 

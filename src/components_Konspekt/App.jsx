@@ -21,7 +21,7 @@ import { NotFound } from "pages/NotFound";
 
 //* Так  РАБОТАЕТ!!!
 const Home = lazy(() => import("pages/Home"));
-const About = lazy(() => import("pages/Movies"));
+const About = lazy(() => import("pages/About"));
   const Mission = lazy(() => import("components/Mission"));
   const Team = lazy(() => import("components/Team"));
   const Reviews = lazy(() => import("components/Reviews"));
@@ -31,7 +31,7 @@ const Products = lazy(() => import("pages/Products"));
 
 
 
-//todo ==> до Разделение кода
+//todo ==> до Разделение кода c lazy и Suspense
 // import { SharedLayout } from "./SharedLayout";
 //   import { Home } from "pages/Home";
 //   import { About } from "pages/About";

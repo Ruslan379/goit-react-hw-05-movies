@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 // import { Link, Outlet } from "react-router-dom";
 import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 
@@ -30,7 +30,7 @@ const MoviesDetails = () => {
     //* _______________ location _____________________________
 
 
-    
+
     const { id } = useParams();
     // const movie_id = Number(id); //? 
     // console.log("movie_id=(id): ", movie_id); //!
@@ -131,7 +131,10 @@ const MoviesDetails = () => {
                             </li>
                         </ul>
                     </div>
-                    <Outlet />
+                    <Suspense fallback={null}>
+                    {/* <Suspense fallback={<div>Loading page...</div>}> */}
+                        <Outlet />
+                    </Suspense>
                 </div>
             )}
         </>
