@@ -17,14 +17,20 @@ const MoviesDetails = () => {
     // const [genres, setGenres] = useState([]); //?
     const [genresAll, setGenresAll] = useState("");
     const [error, setError] = useState(false);
-    const [locationState, setLocationState] = useState(null);
     
+    //* ++++++++++++++ location +++++++++++++++++++++++++++++
+    const [locationState, setLocationState] = useState(null); //! МОЙ вариант для location
+    
+    //! МОЙ вариант для location
     useEffect(() => {
         if (location.state !== null)  {
             setLocationState(location.state?.from);
         }
     }, [location.state]);
+    //* _______________ location _____________________________
 
+
+    
     const { id } = useParams();
     // const movie_id = Number(id); //? 
     // console.log("movie_id=(id): ", movie_id); //!
@@ -63,15 +69,15 @@ const MoviesDetails = () => {
     //! Дестуктуризируем нужныесв-ва из объекта movieDetails 
     const { poster_path, title, name, overview } = movieDetails;
 
-
+    //* ++++++++++++++ location +++++++++++++++++++++++++++++
     // console.log("location.state: ", location.state); //!
     // console.log("location.pathname: ", location.pathname); //!
-    console.log("location.state.from: ", location.state?.from); //!!!
+    // console.log("location.state.from: ", location.state?.from); //!!!
     
-    // const backLinkHref = location.state?.from ?? '/';
-
-    const backLinkHref = locationState ?? '/';
-    console.log("backLinkHref: ", backLinkHref); //!!!
+    // const backLinkHref = location.state?.from ?? '/'; //! вариант для location РЕПЕТЫ
+    const backLinkHref = locationState ?? '/'; //! МОЙ вариант для location
+    // console.log("backLinkHref: ", backLinkHref); //!!!
+    //* _______________ location _____________________________
 
 
     // console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
@@ -117,9 +123,11 @@ const MoviesDetails = () => {
                         <ul>
                             <li>
                                 <Link to="cast">Cast</Link>
+                                {/* <Link to="cast" state={location.state.from}>Cast</Link> */}
                             </li>
                             <li>
                                 <Link to="reviews">Reviews</Link>
+                                {/* <Link to="reviews" state={location.state.from}>Reviews</Link> */}
                             </li>
                         </ul>
                     </div>
