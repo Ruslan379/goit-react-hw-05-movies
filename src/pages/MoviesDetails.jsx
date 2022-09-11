@@ -4,8 +4,8 @@ import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
-
-import { getMovieDetails } from "../fakeAPI";
+import BackLink from "components/BackLink";
+import { getMovieDetails } from "fakeAPI";
 
 
 const MoviesDetails = () => {
@@ -101,7 +101,8 @@ const MoviesDetails = () => {
             {!error && (
                 <div style={{ border: "solid 1px", boxShadow: "7px 7px 3px 0px rgba(0,0,0,0.50)" }}>
                     
-                    <Link to={backLinkHref}>Go back</Link>
+                    {/* <Link to={backLinkHref}>Go back</Link> */}
+                    <BackLink to={backLinkHref}>Go back</BackLink>
 
                     <div style={{ display: "flex" }}>
                         {/* <img src="https://image.tmdb.org/t/p/original/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg" alt="" /> */}
