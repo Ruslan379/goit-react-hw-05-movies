@@ -70,13 +70,14 @@ const MoviesDetails = () => {
     const { poster_path, title, name, overview } = movieDetails;
 
     //* ++++++++++++++ location +++++++++++++++++++++++++++++
-    // console.log("location.state: ", location.state); //!
+    console.log("location.state: ", location.state); //!
     // console.log("location.pathname: ", location.pathname); //!
-    // console.log("location.state.from: ", location.state?.from); //!!!
+    console.log("location.state.from: ", location.state?.from); //!!!
     
     // const backLinkHref = location.state?.from ?? '/'; //! вариант для location РЕПЕТЫ
-    const backLinkHref = locationState ?? '/'; //! МОЙ вариант для location
-    // console.log("backLinkHref: ", backLinkHref); //!!!
+    // const backLinkHref = locationState ?? '/'; //! МОЙ вариант-1 для location
+    const backLinkHref = location.state?.from ?? locationState; //! МОЙ вариант-2 для location
+    console.log("backLinkHref: ", backLinkHref); //!!!
     //* _______________ location _____________________________
 
 
