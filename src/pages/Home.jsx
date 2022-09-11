@@ -1,6 +1,7 @@
 // import { useState, useEffect, useLayoutEffect } from 'react'; 
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom"; 
+import { Link, useLocation } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
@@ -14,6 +15,7 @@ import { getTrendingAllDay } from "../fakeAPI";
 
 
 const Home = () => {
+  const location = useLocation();
   //! useState ===> **** (аналог this.state.****)
   const [results, setResults] = useState([]);
   // const [error, setError] = useState(false);
@@ -61,7 +63,7 @@ const Home = () => {
         {results.map(({ id, title, name }) => (
               // <ul>
                 // <li key={id}>
-                  <Link key={id} to={`movies/${id}`}>
+                  <Link key={id} to={`movies/${id}`} state={{ from: location }}>
                     {/* <p>{title}</p> */}
                     <p>{title || name}</p>
                   </Link>

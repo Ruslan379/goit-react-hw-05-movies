@@ -28,7 +28,7 @@ const Movies = () => {
 
 
   const query = searchParams.get("query") ?? '';
-  console.log("searchParams query: ", query); //!
+  // console.log("searchParams query: ", query); //!
 
 
 
@@ -52,7 +52,7 @@ const Movies = () => {
     if (!query) {
       return;
     };
-    console.log("useEffect query: ", query); //!
+    // console.log("useEffect query: ", query); //!
     //! Запрос, название фильма - это query
     getSearchMovies(query)
       .then(( results ) => { 
