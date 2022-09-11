@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ImSearch } from 'react-icons/im';
 import PropTypes from 'prop-types';
-// import { useSearchParams } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
@@ -13,15 +12,11 @@ const Searchbar = ({onSubmit}) => {
   //! useState ===> query (аналог this.state.query)
   const [query, setQuery] = useState('');
 
-  // const [searchParams] = useSearchParams();
-  // const name = searchParams.get("query");
-  // console.log("name: ", name);
 
   //! Запись в state значения поля инпут
   const handleChange = event => {
     setQuery(event.currentTarget.value.toLowerCase());
   };
-
 
 
   //! Submit ФОРМЫ, провека на "", передача пропса this.state.query в App
@@ -36,7 +31,6 @@ const Searchbar = ({onSubmit}) => {
     // console.log("query: ", query); //! //!
     //! Передача значения (query) в App
     onSubmit(query); //?
-
     //! Очистка поля инпута
     event.target.reset()
   };

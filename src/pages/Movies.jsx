@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-// import { Link, useSearchParams } from 'react-router-dom';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
+
 import { toast } from 'react-toastify';
 
-
-import { getSearchMovies } from "../fakeAPI";
+import { getSearchMovies } from "fakeAPI";
 import Searchbar from 'components/Searchbar';
 
 

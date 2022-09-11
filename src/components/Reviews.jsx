@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
+import { getMovieReviews } from "fakeAPI";
 
-import { getMovieReviews } from "../fakeAPI";
 
 
 const Reviews = () => {

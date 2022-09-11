@@ -5,7 +5,7 @@ import { getProducts } from "../fakeAPI";
 
 //! Это импорты из ProductList
 import { Link, useLocation } from "react-router-dom";
-import { Container, CardWrapper, ProductName } from "components/ProductList.styled";
+import { Container, CardWrapper, ProductName } from "components/BackLink.styled";
 
 
 

@@ -1,15 +1,11 @@
 // import { useState, useEffect, useLayoutEffect } from 'react'; 
 import { useState, useEffect } from 'react';
-// import { Link } from "react-router-dom"; 
 import { Link, useLocation } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
-// import { ProductList } from "../components/ProductList";
+import { getTrendingAllDay } from "fakeAPI";
 
-import { getTrendingAllDay } from "../fakeAPI";
-
-// import { Container, CardWrapper, ProductName } from "components/ProductList.styled";
 
 
 

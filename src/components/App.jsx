@@ -38,10 +38,12 @@ export const App = () => {
           <Route path="/movies/:id" element={<MoviesDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
           </Route>
 
-          <Route path="*" element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
         </Route>
+      <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
