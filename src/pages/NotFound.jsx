@@ -8,7 +8,7 @@ const NotFound = () => {
     <main style={{ textAlign: "center" }}>
       <b style={{ fontSize: 64 }}>404</b>
       <p>Sorry, we couldn't find that page :(</p>
-      <BackLink to={backLinkHref}>Go to Home</BackLink>
+      <BackLink to={backLinkHref}>Go at Home</BackLink>
     </main>
   );
 };

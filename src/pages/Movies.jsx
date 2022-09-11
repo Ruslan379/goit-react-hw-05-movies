@@ -21,7 +21,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   
 
-  const changeFilter = value => {
+  const handleFormSubmit = value => {
     setSearchParams(value !== '' ? { query: value } : {});
   };
 
@@ -97,7 +97,7 @@ const Movies = () => {
     <main>
       {/* <h2>Поиск фильма: {query}</h2> */}
       {/* <Searchbar onSubmit={handleFormSubmit} /> */}
-      <Searchbar onSubmit={changeFilter} />
+      <Searchbar onSubmit={handleFormSubmit} />
 
       {/* <Link to="/">Go back</Link> */}
 
