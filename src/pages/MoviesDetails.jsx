@@ -13,7 +13,6 @@ const MoviesDetails = () => {
     const [movieDetails, setMovieDetails] = useState({});
     const [yearDate, setYearDate] = useState("");
     const [userScore, setUserScore] = useState(0);
-    // const [genres, setGenres] = useState([]); //?
     const [genresAll, setGenresAll] = useState("");
     const [error, setError] = useState(false);
     
@@ -29,30 +28,16 @@ const MoviesDetails = () => {
     //* _______________ location _____________________________
 
 
-
     const { id } = useParams();
-    // const movie_id = Number(id); //? 
-    // console.log("movie_id=(id): ", movie_id); //!
 
     useEffect(() => {
         setError(false);
         getMovieDetails(Number(id))
             .then(( movieDetails ) => { 
-            // console.log("getTrendingAllDa movieDetails: ", movieDetails); //!
             setMovieDetails(movieDetails);
             setYearDate(movieDetails.release_date.substr(0, 4));
             setUserScore((movieDetails.vote_average * 10).toFixed(0));
-            // console.log("getTrendingAllDa movieDetails.genres: ", movieDetails.genres); //!
-
-            // const genres = movieDetails.genres.map(item => item.name); //?
-            // setGenres(movieDetails.genres.map(item => (Object.values(item)))); //! ТАК НЕЛЬЗЯ!!!
-            // setGenres(prevState => [...prevState, ...genres]); //?
-            // console.log("genres: ", genres); //!
-
-            // setGenresAll(genres.join(", ")); //!!! замена ниже:
             setGenresAll((movieDetails.genres.map(item => item.name)).join(" ")); 
-            // console.log("genresAll: ", genresAll); //!
-            // console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
             })
             .catch(error => {
             setError(error.message);
@@ -69,23 +54,11 @@ const MoviesDetails = () => {
     const { poster_path, title, name, overview } = movieDetails;
 
     //* ++++++++++++++ location +++++++++++++++++++++++++++++
-    // console.log("location.state: ", location.state); //!
-    // console.log("location.pathname: ", location.pathname); //!
-    // console.log("location.state.from: ", location.state?.from); //!!!
-    
     // const backLinkHref = location.state?.from ?? '/'; //! вариант для location РЕПЕТЫ
     // const backLinkHref = locationState ?? '/'; //! МОЙ вариант-1 для location
     const backLinkHref = location.state?.from ?? locationState; //! МОЙ вариант-2 для location
-    // console.log("backLinkHref: ", backLinkHref); //!!!
     //* _______________ location _____________________________
 
-
-    // console.log("movieDetails.poster_path: ", movieDetails.poster_path); //!
-    // const basicURL = "https://image.tmdb.org/t/p/original";
-
-    // console.log("movieDetails.release_date: ", movieDetails.release_date); //!
-    // const yearDate = movieDetails.release_date.substr(0, 4);
-    // console.log("yearDate: ", yearDate); //!
 
     return (
         <>
@@ -96,15 +69,13 @@ const MoviesDetails = () => {
                     </div>
             )}
             
-            {/* {!error && movieDetails && ( //! Проверка movieDetails на пустой объект */}
+
             {!error && (
                 <div style={{ border: "solid 1px", boxShadow: "7px 7px 3px 0px rgba(0,0,0,0.50)" }}>
                     
-                    {/* <Link to={backLinkHref}>Go back</Link> */}
                     <BackLink to={backLinkHref}>Go back</BackLink>
 
                     <div style={{ display: "flex" }}>
-                        {/* <img src="https://image.tmdb.org/t/p/original/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg" alt="" /> */}
                         <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
 
                         <div style={{ marginLeft: "24px", paddingRight: "24px" }}>
@@ -115,7 +86,6 @@ const MoviesDetails = () => {
                             <p>{overview}</p>
                             <h3>Genres</h3>
                             <p>{genresAll}</p>
-
                         </div>
                     </div>
 
@@ -124,16 +94,13 @@ const MoviesDetails = () => {
                         <ul>
                             <li>
                                 <Link to="cast">Cast</Link>
-                                {/* <Link to="cast" state={location.state.from}>Cast</Link> */}
                             </li>
                             <li>
                                 <Link to="reviews">Reviews</Link>
-                                {/* <Link to="reviews" state={location.state.from}>Reviews</Link> */}
                             </li>
                         </ul>
                     </div>
                     <Suspense fallback={null}>
-                    {/* <Suspense fallback={<div>Loading page...</div>}> */}
                         <Outlet />
                     </Suspense>
                 </div>

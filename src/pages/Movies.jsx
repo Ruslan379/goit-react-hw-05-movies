@@ -12,9 +12,8 @@ import Searchbar from 'components/Searchbar';
 const Movies = () => {
   const location = useLocation();
   //! useState ===> **** (аналог this.state.****)
-  // const [query, setQuery] = useState(''); //! Уже НЕ НАДО
   const [results, setResults] = useState([]);
-  // const [error, setError] = useState(false);
+
 
   //! Хук useSearchParams - записыват значение из инпута (из query) 
   //! в URL - строку запроса и хранит его всвоем объекте параметров
@@ -27,21 +26,6 @@ const Movies = () => {
 
 
   const query = searchParams.get("query") ?? '';
-  // console.log("searchParams query: ", query); //!
-
-
-
-  //! Уже НЕ НАДО ==> НЕ ТАК, ниже смотри
-  //! Принимаем (query ===> querySearchbar) из Searchbar
-  // const handleFormSubmit = (querySearchbar) => {
-  //   // console.log("querySearchbar: ", querySearchbar); //!
-  //   setQuery(querySearchbar);
-  // };
-
-
-  
-
-
 
 
 
@@ -51,37 +35,18 @@ const Movies = () => {
     if (!query) {
       return;
     };
-    // console.log("useEffect query: ", query); //!
     //! Запрос, название фильма - это query
     getSearchMovies(query)
       .then(( results ) => { 
-        // console.log("getSearchMovies results: ", results); //!
-        
         //! Проверка на неправильный запрос
         if (results.length === 0) {
           toast.warning(`Нет такого фильма: ${query}`);
           setResults([]);
           return;
         }
-          // } else {
-            // if (page === 1) {
-            //   toast.success(`По вашей теме найдено ${totalHits} изображений`, { autoClose: 3000 });
-            // };
-        // setResults(prevState => [...prevState, ...results]); //?
         setResults(results); 
-
-            // };
-          // endOfCollection - это цифра еще НЕ ПРОСМОТРЕННЫХ элементов коллекции
-          // console.log("endOfCollection: ", endOfCollection); //!
-          // if (endOfCollection <= 0) {
-          //   toast.info('Вы достигли конца результатов поиска', { autoClose: 3000 }); 
-          //   setShowButton(false); //! Кнопка LOAD MORE => ПРЯЧЕМ
-          //   return;
-          // }
       })
       .catch(error => {
-          // setIsLoading(false);
-          // setError(error.message);
           console.log(error.message); //!
           toast.error(`Ошибка запроса: ${error.message}`, { position: "top-center", autoClose: 2000 } ); 
       })
@@ -95,11 +60,7 @@ const Movies = () => {
   
   return (
     <main>
-      {/* <h2>Поиск фильма: {query}</h2> */}
-      {/* <Searchbar onSubmit={handleFormSubmit} /> */}
       <Searchbar onSubmit={handleFormSubmit} />
-
-      {/* <Link to="/">Go back</Link> */}
 
       {results.length > 0 && (
         <div>
@@ -117,76 +78,3 @@ const Movies = () => {
 
 export default Movies;
 
-
-
-
-
-
-  //todo old            
-  // return (
-  //   <main>
-  //     <h1>Trending today</h1>
-  //     <div>
-  //           {results.map((result) => (
-  //               <div key={result.id}>
-  //                 <Link to={`movies/${result.id}`}>
-  //                   {/* <p>{result.title}</p> */}
-  //                   <p>{result.title || result.name}</p>
-  //                 </Link>
-  //               </div>
-  //           ))}
-  //       </div>
-  //   </main>
-  // );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//todo OLD
-// import { Outlet } from "react-router-dom";  //! ТАК  <MoviesDetails /> будет рендерится ПОД основным текстом в <Movies />
-
-// const Movies = () => {
-//   return (
-//     <main>
-//       <h1>Movies</h1>
-//       <p>
-//         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-//         laborum amet ab cumque sit nihil dolore modi error repudiandae
-//         perspiciatis atque voluptas corrupti, doloribus ex maiores quam magni
-//         mollitia illum dolor quis alias in sequi quod. Sunt ex numquam hic
-//         asperiores facere natus sapiente cum neque laudantium quam, expedita
-//         voluptates atque quia aspernatur saepe illo, rem quasi praesentium
-//         aliquid sed inventore obcaecati veniam? Nisi magnam vero, dolore
-//         praesentium totam ducimus similique asperiores culpa, eius amet
-//         repudiandae quam ut. Architecto commodi, tempore ut nostrum voluptas
-//         dolorum illum voluptatum dolores! Quas perferendis quis alias excepturi
-//         eaque voluptatibus eveniet error, nulla rem iusto?
-//       </p>
-//       {/* <Outlet /> //! ТАК  <MoviesDetails /> будет рендерится ПОД основным текстом в <Movies /> */}
-//     </main>
-//   );
-// };
-
-// export default Movies;

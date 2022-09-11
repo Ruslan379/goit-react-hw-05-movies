@@ -28,7 +28,6 @@ const Searchbar = ({onSubmit}) => {
       event.target.reset()
       return;
     };
-    // console.log("query: ", query); //! //!
     //! Передача значения (query) в App
     onSubmit(query); //?
     //! Очистка поля инпута
@@ -76,21 +75,3 @@ Searchbar.propTypes = {
 };
 
 export default Searchbar;
-
-
-
-
-
-
-//todo OLD
-// export const SearchBox = ({ value, onChange }) => {
-//   return (
-//     <div>
-//       <input
-//         type="text"
-//         value={value}
-//         onChange={e => onChange(e.target.value)}
-//       />
-//     </div>
-//   );
-// };
