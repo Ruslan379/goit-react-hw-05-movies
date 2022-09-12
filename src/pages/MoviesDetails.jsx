@@ -21,8 +21,9 @@ const MoviesDetails = () => {
     
     //! МОЙ вариант для location
     useEffect(() => {
-        if (location.state !== null)  {
-            setLocationState(location.state?.from);
+        //! ТАК РАБОТАЕТ (2- вариант)
+        if (location.state?.from)  {
+            setLocationState(location.state.from);
         }
     }, [location.state]);
     //* _______________ location _____________________________
@@ -54,9 +55,11 @@ const MoviesDetails = () => {
     const { poster_path, title, name, overview } = movieDetails;
 
     //* ++++++++++++++ location +++++++++++++++++++++++++++++
+    // console.log("location.state?.from: ", location.state?.from); //!
     // const backLinkHref = location.state?.from ?? '/'; //! вариант для location РЕПЕТЫ
     // const backLinkHref = locationState ?? '/'; //! МОЙ вариант-1 для location
     const backLinkHref = location.state?.from ?? locationState; //! МОЙ вариант-2 для location
+    // console.log("backLinkHref: ", backLinkHref);  //!
     //* _______________ location _____________________________
 
 

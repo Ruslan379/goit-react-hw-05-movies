@@ -22,8 +22,13 @@ const MoviesDetails = () => {
     
     //! МОЙ вариант для location
     useEffect(() => {
-        if (location.state !== null)  {
-            setLocationState(location.state?.from);
+        //! ТАК РАБОТАЕТ (1- вариант)
+        // if (location.state !== null)  {
+        //     setLocationState(location.state?.from);
+        // }
+        //! ТАК РАБОТАЕТ (2- вариант)
+        if (location.state?.from)  {
+            setLocationState(location.state.from);
         }
     }, [location.state]);
     //* _______________ location _____________________________
