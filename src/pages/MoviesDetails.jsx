@@ -79,7 +79,11 @@ const MoviesDetails = () => {
                     <BackLink to={backLinkHref}>Go back</BackLink>
 
                     <div style={{ display: "flex" }}>
-                        <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
+                        <img
+                            style={{ marginLeft: "24px"}}
+                            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+                            alt={title || name}
+                        />
 
                         <div style={{ marginLeft: "24px", paddingRight: "24px" }}>
                             {/* <h1>Информация о фильме</h1> */}

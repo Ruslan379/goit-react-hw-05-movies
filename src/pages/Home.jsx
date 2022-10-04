@@ -32,12 +32,13 @@ const Home = () => {
       <h1>Trending today</h1>
       <div>
         {results.map(({ id, title, name }) => (
-                  <Link key={id} to={`movies/${id}`} state={{ from: location }}>
-                    {/* <p>{title}</p> */}
-                    <p>{title || name}</p>
-                  </Link>
-            ))}
-        </div>
+          <Link key={id} to={`movies/${id}`} state={{ from: location }}>
+            {/* <p>{title}</p> */}
+            {/* <p>{title || name}</p> */}
+            <p>{(title) ? title.toUpperCase() : name}</p>
+          </Link>
+        ))}
+      </div>
     </main>
   );
 };
