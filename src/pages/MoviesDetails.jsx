@@ -97,7 +97,7 @@ const MoviesDetails = () => {
                             <h3>Overview</h3>
                             <p>{overview}</p>
                             <h3>Genres</h3>
-                            <p>{genresAll}</p>
+                            <p>{genresAll.length !== 0 ? genresAll : 'Sorry, no genres...' }</p>
                         </div>
                     </div>
 
