@@ -66,9 +66,9 @@ const Movies = () => {
         <div>
           {results.map(({ id, title, name }) => (
             <Link key={id} to={`${id}`} state={{ from: location }}>
-              {/* <p>{title}</p> */}
+              <p>{title}</p>
               {/* <p>{title || name}</p> */}
-              <p>{(title) ? title.toUpperCase() : name}</p>
+              {/* <p>{(title) ? title.toUpperCase() : name}</p> */}
             </Link>
           ))}
         </div>

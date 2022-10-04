@@ -33,9 +33,9 @@ const Home = () => {
       <div>
         {results.map(({ id, title, name }) => (
           <Link key={id} to={`movies/${id}`} state={{ from: location }}>
-            {/* <p>{title}</p> */}
+            <p>{title}</p>
             {/* <p>{title || name}</p> */}
-            <p>{(title) ? title.toUpperCase() : name}</p>
+            {/* <p>{(title) ? title.toUpperCase() : name}</p> */}
           </Link>
         ))}
       </div>

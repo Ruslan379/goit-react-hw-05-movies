@@ -91,8 +91,8 @@ const MoviesDetails = () => {
 
                         <div style={{ marginLeft: "24px", paddingRight: "24px" }}>
                             {/* <h1>Информация о фильме</h1> */}
-                            {/* <h2 style={{ color: "#571616" }}>{`${title || name} (${yearDate})`}</h2> */}
-                            <h2 style={{ color: "#571616" }}>{`${(title) ? title.toUpperCase() : name} (${yearDate || "****"})`}</h2>
+                            <h2 style={{ color: "#571616" }}>{`${title || name} (${yearDate || "****"})`}</h2>
+                            {/* <h2 style={{ color: "#571616" }}>{`${(title) ? title.toUpperCase() : name} (${yearDate || "****"})`}</h2> */}
                             <p>{`User Score: ${userScore}%`}</p>
                             <h3>Overview</h3>
                             <p>{overview}</p>
