@@ -3,8 +3,8 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
-import { getSearchMovies } from "fakeAPI";
-import Searchbar from 'components/Searchbar';
+import { getSearchMovies } from "services/fakeAPI";
+import Searchbar from 'components/Searchbar/Searchbar';
 
 
 

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
-import { getMovieCast } from "fakeAPI";
+import { getMovieCast } from "services/fakeAPI";
 
 
 const Cast = () => {

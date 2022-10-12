@@ -4,14 +4,14 @@ import { lazy } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { SharedLayout } from "components/SharedLayout";
+import { SharedLayout } from "components/SharedLayout/SharedLayout";
 import NotFound from "pages/NotFound";
 
 const Home = lazy(() => import("pages/Home"));
 const Movies = lazy(() => import("pages/Movies"));
 const MoviesDetails = lazy(() => import("pages/MoviesDetails"));
-  const Cast = lazy(() => import("components/Cast"));
-  const Reviews = lazy(() => import("components/Reviews"));
+  const Cast = lazy(() => import("components/Cast/Cast"));
+  const Reviews = lazy(() => import("components/Reviews/Reviews"));
 
 
 

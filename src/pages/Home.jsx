@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
-import { getTrendingAllDay } from "fakeAPI";
+import { getTrendingAllDay } from "services/fakeAPI";
 
 
 

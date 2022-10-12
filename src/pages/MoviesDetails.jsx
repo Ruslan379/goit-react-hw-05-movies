@@ -3,8 +3,8 @@ import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
-import BackLink from "components/BackLink";
-import { getMovieDetails } from "fakeAPI";
+import BackLink from "components/BackLink/BackLink";
+import { getMovieDetails } from "services/fakeAPI";
 //! Импорт картинки-заглушки для МОДАЛКИ
 import defaultImageSmall from "images/no-img_small.jpg";
 
@@ -21,10 +21,12 @@ const MoviesDetails = () => {
     
     //* ++++++++++++++ location +++++++++++++++++++++++++++++
     const [locationState, setLocationState] = useState(null); //! МОЙ вариант для location
+
+    // const [locationState, setLocationState] = useState('/'); //! Вариант Павла Шеремета
     
     //! МОЙ вариант для location
     useEffect(() => {
-        //! ТАК РАБОТАЕТ (2- вариант)
+        //! ТАК РАБОТАЕТ (2-й вариант)
         if (location.state?.from)  {
             setLocationState(location.state.from);
         }
@@ -58,10 +60,10 @@ const MoviesDetails = () => {
     const { poster_path, title, name, overview } = movieDetails;
 
     //* ++++++++++++++ location +++++++++++++++++++++++++++++
-    // console.log("location.state?.from: ", location.state?.from); //!
+    console.log("location.state?.from: ", location.state?.from); //!
     // const backLinkHref = location.state?.from ?? '/'; //! вариант для location РЕПЕТЫ
     // const backLinkHref = locationState ?? '/'; //! МОЙ вариант-1 для location
-    const backLinkHref = location.state?.from ?? locationState; //! МОЙ вариант-2 для location
+    // const backLinkHref = location.state?.from ?? locationState; //? МОЙ вариант-2 для location
     // console.log("backLinkHref: ", backLinkHref);  //!
     //* _______________ location _____________________________
 
@@ -79,7 +81,9 @@ const MoviesDetails = () => {
             {!error && (
                 <div style={{ border: "solid 1px", boxShadow: "7px 7px 3px 0px rgba(0,0,0,0.50)" }}>
                     
-                    <BackLink to={backLinkHref}>Go back</BackLink>
+                    {/* <BackLink to={backLinkHref}>Go back</BackLink> */}
+                    <BackLink to={location.state?.from ?? locationState} btnText="Go back" /> 
+                    {/* <BackLink to={location.state?.from ?? locationState}>Go back</BackLink> */}
 
                     <div style={{ display: "flex" }}>
                         <img

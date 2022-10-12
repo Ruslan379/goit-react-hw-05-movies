@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { toast } from 'react-toastify';
 
-import css from 'components/Searchbar.module.css' 
+import css from 'components/Searchbar/Searchbar.module.css' 
 
 
 

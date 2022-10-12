@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
-import { getMovieReviews } from "fakeAPI";
+import { getMovieReviews } from "services/fakeAPI";
 
 
 
@@ -11,27 +11,19 @@ const Reviews = () => {
     //! useState ===> **** (аналог this.state.****)
     const [movieReviews, setMovieReviews] = useState([]);
     
-
     const { id } = useParams();
-    // const movie_id = Number(id); //? 
-    // console.log("Reviews movie_id=(id): ", movie_id); //!
+
 
     useEffect(() => {
     getMovieReviews(Number(id))
         .then(( movieReviews ) => { 
-            // console.log("getMovieReviews movieReview: ", movieReviews); //!
             setMovieReviews(movieReviews.results);
-            // console.log("getMovieReviews movieReview: ", movieReviews); //!
-            
         })
         .catch(error => {
-            // setError(error.message);
             console.log(error.message); //!
             toast.error(`Ошибка запроса: ${error.message}`, { position: "top-center", autoClose: 2000 } ); 
         })
     }, [id]);
-
-    // console.log("getMovieReviews movieReview: ", movieReviews); //!
 
 
     //! Проверка results на пустой объект
