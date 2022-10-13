@@ -19,9 +19,15 @@ const Movies = () => {
   //! в URL - строку запроса и хранит его всвоем объекте параметров
   const [searchParams, setSearchParams] = useSearchParams();
   
+  // //? Мой вариант задачи "ПРОКИНУТЬ МАРШРУТ"
+  // const handleFormSubmit = value => {
+  //   setSearchParams(value !== '' ? { query: value } : {});
+  // };
 
+  //* Вариант Паши Шеремета задачи "КАК ПРОКИНУТЬ МАРШРУТ ДАЛЬШЕ"
+  //* Хук useSearchParams - дополнительно хранит состояние маршрута: "откуда мы пришли"
   const handleFormSubmit = value => {
-    setSearchParams(value !== '' ? { query: value } : {});
+    setSearchParams(value !== '' ? { query: value } : {}, { state: { from: location } });
   };
 
 

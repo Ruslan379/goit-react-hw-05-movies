@@ -20,17 +20,17 @@ const MoviesDetails = () => {
     const [error, setError] = useState(false);
     
     //* ++++++++++++++ location +++++++++++++++++++++++++++++
-    const [locationState, setLocationState] = useState(null); //! МОЙ вариант для location
+    // const [locationState, setLocationState] = useState(null); //? МОЙ вариант для location
 
-    // const [locationState, setLocationState] = useState('/'); //! Вариант Павла Шеремета
+    const [locationState] = useState('/'); //* Вариант Павла Шеремета
     
-    //! МОЙ вариант для location
-    useEffect(() => {
-        //! ТАК РАБОТАЕТ (2-й вариант)
-        if (location.state?.from)  {
-            setLocationState(location.state.from);
-        }
-    }, [location.state]);
+    //? МОЙ вариант для location
+    // useEffect(() => {
+    //     //! ТАК РАБОТАЕТ (2-й вариант)
+    //     if (location.state?.from)  {
+    //         setLocationState(location.state.from);
+    //     }
+    // }, [location.state]);
     //* _______________ location _____________________________
 
 
@@ -68,6 +68,7 @@ const MoviesDetails = () => {
     //* _______________ location _____________________________
 
 
+
     return (
         <>
             {error && (
@@ -82,8 +83,8 @@ const MoviesDetails = () => {
                 <div style={{ border: "solid 1px", boxShadow: "7px 7px 3px 0px rgba(0,0,0,0.50)" }}>
                     
                     {/* <BackLink to={backLinkHref}>Go back</BackLink> */}
+                    {/* //* Вариант подписи кнопки от Паши Шеремета */}
                     <BackLink to={location.state?.from ?? locationState} btnText="Go back" /> 
-                    {/* <BackLink to={location.state?.from ?? locationState}>Go back</BackLink> */}
 
                     <div style={{ display: "flex" }}>
                         <img
@@ -109,10 +110,20 @@ const MoviesDetails = () => {
                         <p style={{ marginLeft: "10px" }}>Additional Information</p>
                         <ul>
                             <li>
-                                <Link to="cast">Cast</Link>
+                                <Link
+                                    to="cast"
+                                    state= {{ from: location.state?.from }} //* Вариант Паши Шеремета задачи "КАК ПРОКИНУТЬ МАРШРУТ ДАЛЬШЕ"
+                                >
+                                    Cast
+                                </Link>
                             </li>
                             <li>
-                                <Link to="reviews">Reviews</Link>
+                                <Link
+                                    to="reviews"
+                                    state= {{ from: location.state?.from }} //* Вариант Паши Шеремета задачи "КАК ПРОКИНУТЬ МАРШРУТ ДАЛЬШЕ"
+                                >
+                                    Reviews
+                                </Link>
                             </li>
                         </ul>
                     </div>
